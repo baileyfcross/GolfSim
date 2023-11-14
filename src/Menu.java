@@ -15,7 +15,6 @@ public class Menu {
 
     private ArrayList<String> getMenuItems() {
         ArrayList<String> menuItems = new ArrayList<>();
-        //StringBuilder menuItems = new StringBuilder();
         menuItems.add("Start Game");
         menuItems.add("Close Game");
         menuItems.add("Credits");

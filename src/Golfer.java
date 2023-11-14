@@ -1,5 +1,6 @@
 public class Golfer {
     private String Gender = "";
+    private String Handiness = "";
 
     public Golfer () {
 
@@ -13,6 +14,7 @@ public class Golfer {
         do {
             golferCreation.userSumbmittedName();
         } while (!golferCreation.userInputIgnoresEqualYesOrNo("Re-type your golfers name: "));
+        golferCreation.println("Are they left or right handed?: ");
 
     }
     public String getGender() {
