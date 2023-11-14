@@ -30,11 +30,12 @@ public class Menu {
         print("Would you like to make a new Golfer? ");
         if(userInputIgnoresEqualYesOrNo("")){
             Golfer tempNewGolfer = new Golfer();
-        }
+            tempNewGolfer.createNewGolfer();
 
+        }
     }
 
-    private boolean userInputIgnoresEqualYesOrNo(String elsePrintStatement) {
+    protected boolean userInputIgnoresEqualYesOrNo(String elsePrintStatement) {
         if (userInput().equalsIgnoreCase(YES)) {
             return true;
         } else {
@@ -43,12 +44,12 @@ public class Menu {
         }
     }
 
-    private String userInput() {
+    protected String userInput() {
         Scanner in = new Scanner(System.in);
         return in.nextLine();
     }
 
-    private void userSumbmittedName(){
+    protected void userSumbmittedName(){
         this.tempPlayerName = userInput();
         println(sumbmittedName(tempPlayerName));
     }
@@ -59,10 +60,10 @@ public class Menu {
                 " is this correct?";
     }
 
-    private void println(String userText){
+    protected void println(String userText){
         System.out.println(userText);
     }
-    private void print(String userText){
+    protected void print(String userText){
         System.out.print(userText);
     }
 
