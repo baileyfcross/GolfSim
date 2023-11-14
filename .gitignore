@@ -31,3 +31,5 @@ bin/
 /.idea/modules.xml
 /.idea/vcs.xml
 /.idea/workspace.xml
+/testJSON.json
+/testJSON.txt
