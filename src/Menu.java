@@ -24,7 +24,6 @@ public class Menu {
     }
 
     public void mainMenu() {
-        boolean quitGameFlag = false;
         println("Welcome to Golf Sim");
         println("Please select what you would like to do from the list below");
         println(getMenuItems().toString());
