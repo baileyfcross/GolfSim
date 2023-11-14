@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -7,19 +8,37 @@ public class Menu {
 
     private boolean playerNameFlag = false;
     private final static String YES = "yes";
-    public Menu (){
+
+    public Menu() {
         menuText = "";
     }
-    public void menuStart(){
+
+    private ArrayList<String> getMenuItems() {
+        ArrayList<String> menuItems = new ArrayList<>();
+        //StringBuilder menuItems = new StringBuilder();
+        menuItems.add("Start Game");
+        menuItems.add("Close Game");
+        menuItems.add("Credits");
+
+        return menuItems;
+    }
+
+    public void mainMenu() {
+        boolean quitGameFlag = false;
+        println("Welcome to Golf Sim");
+        println("Please select what you would like to do from the list below");
+        println(getMenuItems().toString());
+    }
+
+    public void menuStart() {
         StringBuilder mainMenu = new StringBuilder();
 
-        println("Welcome to Golf Sim");
         print("Please type your name here: ");
 
         userSumbmittedName();
-        while(!playerNameFlag) {
+        while (!playerNameFlag) {
 
-            if(userInputIgnoresEqualYesOrNo("Re-type your name: ")){
+            if (userInputIgnoresEqualYesOrNo("Re-type your name: ")) {
                 setPlayerName(this.tempPlayerName);
                 setPlayerNameFlag(true);
                 break;
@@ -28,7 +47,7 @@ public class Menu {
         }
 
         print("Would you like to make a new Golfer? ");
-        if(userInputIgnoresEqualYesOrNo("")){
+        if (userInputIgnoresEqualYesOrNo("")) {
             Golfer tempNewGolfer = new Golfer();
             tempNewGolfer.createNewGolfer();
 
@@ -49,21 +68,22 @@ public class Menu {
         return in.nextLine();
     }
 
-    protected void userSumbmittedName(){
+    protected void userSumbmittedName() {
         this.tempPlayerName = userInput();
         println(sumbmittedName(tempPlayerName));
     }
 
-    private String sumbmittedName(String userName){
+    private String sumbmittedName(String userName) {
         return "You submitted " +
                 userName +
                 " is this correct?";
     }
 
-    protected void println(String userText){
+    protected void println(String userText) {
         System.out.println(userText);
     }
-    protected void print(String userText){
+
+    protected void print(String userText) {
         System.out.print(userText);
     }
 
