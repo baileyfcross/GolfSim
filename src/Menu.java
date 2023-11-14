@@ -4,6 +4,7 @@ public class Menu {
     private String menuText;
     private String playerName;
     private String tempPlayerName;
+
     private boolean playerNameFlag = false;
     private final static String YES = "yes";
     public Menu (){
@@ -16,29 +17,35 @@ public class Menu {
         print("Please type your name here: ");
 
         userSumbmittedName();
-
         while(!playerNameFlag) {
-            if (userInput().equalsIgnoreCase(YES)) {
-                this.playerName = this.tempPlayerName;
-                playerNameFlag = true;
-                return;
-            } else {
-                print("Re-type your name: ");
+
+            if(userInputIgnoresEqualYesOrNo("Re-type your name: ")){
+                setPlayerName(this.tempPlayerName);
+                setPlayerNameFlag(true);
+                break;
             }
             userSumbmittedName();
+        }
+
+        print("Would you like to make a new Golfer? ");
+        if(userInputIgnoresEqualYesOrNo("")){
+            Golfer tempNewGolfer = new Golfer();
+        }
+
+    }
+
+    private boolean userInputIgnoresEqualYesOrNo(String elsePrintStatement) {
+        if (userInput().equalsIgnoreCase(YES)) {
+            return true;
+        } else {
+            print(elsePrintStatement);
+            return false;
         }
     }
 
     private String userInput() {
         Scanner in = new Scanner(System.in);
         return in.nextLine();
-    }
-
-    private void println(String userText){
-        System.out.println(userText);
-    }
-    private void print(String userText){
-        System.out.print(userText);
     }
 
     private void userSumbmittedName(){
@@ -50,5 +57,28 @@ public class Menu {
         return "You submitted " +
                 userName +
                 " is this correct?";
+    }
+
+    private void println(String userText){
+        System.out.println(userText);
+    }
+    private void print(String userText){
+        System.out.print(userText);
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    public boolean isPlayerNameFlag() {
+        return playerNameFlag;
+    }
+
+    public void setPlayerNameFlag(boolean playerNameFlag) {
+        this.playerNameFlag = playerNameFlag;
     }
 }
